@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <button>展示ajax的内容</button>
+    <div id="div1">我是ajax封装的数据内容</div>
+    <script>
+    var oP = document.querySelector("p");
+    var oBtn = document.querySelector("button");
+    oBtn.onclick = function (){
+        ajax("data.txt",{
+            "sucFn" : function (data){
+                oP.innerHTML = data;
+            },
+            "json" : true,
+        })
+    }
+    function ajax(url,option){
+        var json = option.json==undefined ? false : option.json;//默认显示字符串
+        // 清除浏览器缓存
+        var cache = option.cache==undefined ? true : option.cache;//默认缓存
+        var method = option.method || "get";
+        var sucFn = option.sucFn || function (){};
+        var faiFn = option.faiFn || function (){};
+        var data = option.data || "";
+        var xhr = new XMLHttpRequest();
+        if(method=="get"){
+            xhr.open(method,(cache?url+"?"+data+Date.now():url+"?"+data),true);
+            xhr.send();
+        }else{
+            xhr.open(method,(cache?url+"?"+Date.now():url),true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            xhr.send(data);
+        }
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    sucFn(json?JSON.parse(xhr.responseText):xhr.responseText);
+                }else{
+                    faiFn();
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>

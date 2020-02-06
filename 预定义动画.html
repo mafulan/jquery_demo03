@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        width: 150px;
+        height: 150px;
+        background-color: red;
+        margin: 200px auto;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script src="jquery.min.js"></script>
+    <script src="velocity.min.js"></script>
+    <script src="velocity.ui.min.js"></script>
+    <script>
+    $("div").click(function (){
+        $(this).velocity("transition.bounceLeftIn");
+    })
+    </script>
+</body>
+</html>

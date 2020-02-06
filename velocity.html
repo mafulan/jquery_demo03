@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+#div1{width:100px; height:100px; background-color:red; position:absolute; left:0; top:100px; border:2px solid;}
+#div2{width:100px; height:100px; background-color:red; position:absolute; left:0; top:300px; border:2px solid;}
+#div3{width:100px; height:100px; background-color:red; position:absolute; left:0; top:500px; border:2px solid;}
+</style>
+</head>
+<body style="height:2000px;">
+<a href="javascript:;">div1</a>
+<a href="javascript:;">div2</a>
+<a href="javascript:;">div3</a>
+<div id="div1">div1</div>
+<div id="div2">div2</div>
+<div id="div3">div3</div>
+<script src="jquery.min.js"></script>
+<script src="velocity.min.js"></script>
+<script src="velocity.ui.min.js"></script>
+<script>
+/*楼层监听
+$('a').on('click',function(){
+	$('div').eq($(this).index()).velocity("scroll", { duration: 1000, offset: "-100px" });
+})*/
+
+/*恢复成动画运行之前的状态
+$('#div1').animate({ width: "200px" }, 400); 
+$('#div1').animate({ width: "100px" }, 400);
+
+$('#div1').velocity({ width: "200px" }, 400); 
+$('#div1').velocity("reverse"); 
+*/
+
+/*模拟现实世界的运动
+$('#div1').velocity({ width: "1000px"}, {easing:[ 500, 20 ]});
+*/
+
+/*velocity的参数
+$('#div1').velocity({ left: "500px" }, { delay: 1000, duration :500 ,easing:[ 1000, 40 ],loop : 2,complete:function(){alert(123)}});
+*/
+
+/*带有表达式的动画
+$('#div1').velocity({ width: "+= 50px", height: "/= 2" });
+*/
+/*链式操作的动画
+$('#div1').velocity({ width: "500px", height: "300px"}).velocity({ opacity: 0 }); 
+*/
+/*velocity改变颜色
+$('#div1').velocity({ 
+borderColor: "#f06d06", 
+backgroundColorAlpha: 0.6,//背景颜色透明度变到80% 
+colorBlue: 200//rgb 方式
+});*/
+/*velocity实现css3变换
+$('#div1').velocity({ 
+rotateZ: "180deg", scaleX: 2.0});*/
+
+
+/*创建动画序列
+var seq = [
+　　{
+　　　　elements : $('#div1'),
+　　　　properties : { width: '300px' },
+　　　　options : { duration : 1000 }
+　　},
+　　{
+　　　　elements : $('#div2'),
+　　　　properties : { width: '300px' },
+　　　　options : { duration : 1000 ,sequenceQueue: false}
+　　},
+　　{
+　　　　elements : $('#div3'),
+　　　　properties : { width: '300px' },
+　　　　options : { duration : 1000 }
+　　}
+];
+$.Velocity.RunSequence(seq);*/
+
+/*预定义动画
+callout.bounce
+callout.shake
+callout.flash
+callout.pulse
+callout.swing
+callout.tada
+transition.fadeIn
+transition.fadeOut
+transition.flipXIn
+transition.flipXOut
+transition.flipYIn
+transition.flipYOut
+transition.flipBounceXIn
+transition.flipBounceXOut
+transition.flipBounceYIn
+transition.flipBounceYOut
+transition.swoopIn
+transition.swoopOut
+transition.whirlIn
+transition.whirlOut
+transition.shrinkIn
+transition.shrinkOut
+transition.expandIn
+transition.expandOut
+transition.bounceIn
+transition.bounceOut
+transition.bounceUpIn
+transition.bounceUpOut
+transition.bounceDownIn
+transition.bounceDownOut
+transition.bounceLeftIn
+transition.bounceLeftOut
+transition.bounceRightIn
+transition.bounceRightOut
+transition.slideUpIn
+transition.slideUpOut
+transition.slideDownIn
+transition.slideDownOut
+transition.slideLeftIn
+transition.slideLeftOut
+transition.slideRightIn
+transition.slideRightOut
+transition.slideUpBigIn
+transition.slideUpBigOut
+transition.slideDownBigIn
+transition.slideDownBigOut
+transition.slideLeftBigIn
+transition.slideLeftBigOut
+transition.slideRightBigIn
+transition.slideRightBigOut
+transition.perspectiveUpIn
+transition.perspectiveUpOut
+transition.perspectiveDownIn
+transition.perspectiveDownOut
+transition.perspectiveLeftIn
+transition.perspectiveLeftOut
+transition.perspectiveRightIn
+transition.perspectiveRightOut
+自定义动画*/
+/*$.Velocity.RegisterEffect ( 'animate', {
+　　defaultDuration : 1000,
+　　calls : [
+　　　　[ { scaleX : 1.1 }, 0.5 ],
+　　　　[ { scaleX : 1.0 }, 0.5 ]
+　　]
+} );
+$('#div1').on('mouseover',function(){
+　　$(this).velocity('animate');
+});*/
+</script>
+</body>
+</html>

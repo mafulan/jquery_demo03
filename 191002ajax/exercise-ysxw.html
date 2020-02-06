@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul></ul>
+    <script src="ajax.js"></script>
+    <script>
+    var oUl = document.querySelector("ul");
+    var str = "";
+    getDate();
+    setInterval(getDate,500);
+    function getDate(){
+        ajax("data.txt",{
+            "sucFn":function (data){
+                if(str!=data){
+                    str = data;
+                    createLi();
+                }
+            },
+        })
+    }
+    function createLi(){
+        oUl.innerHTML = "";
+        var arr = JSON.parse(str);
+        for(var i=0;i<arr.length;i++){
+            var oLi = document.createElement("li");
+            oLi.innerHTML = arr[i];
+            oUl.appendChild(oLi);
+        }
+    }
+    </script>
+</body>
+</html>
